@@ -3,6 +3,7 @@
 use reqwest;
 use serde_json;
 use chrono;
+use tauri::Manager;
 
 #[tauri::command]
 async fn track_event(event_type: String) -> Result<(), String> {
