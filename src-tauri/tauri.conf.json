@@ -1,0 +1,20 @@
+{
+  "package": {
+    "productName": "GPT Productivity App",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "windows": [
+      {
+        "title": "The GPT Productivity App",
+        "width": 600,
+        "height": 400
+      }
+    ],
+    "allowlist": {
+      "http": {
+        "request": true
+      }
+    }
+  }
+}
