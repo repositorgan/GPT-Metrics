@@ -1,14 +1,14 @@
 #[tauri::command]
-async fn track_app_open() -> Result<(), String> {
+async fn track_event(event_type: String) -> Result<(), String> {
     let client = reqwest::Client::new();
 
     let payload = serde_json::json!({
-        "event": "app_open",
+        "event": event_type,
         "timestamp": chrono::Utc::now().timestamp(),
-        "machine_id": tauri::api::hash::hash("unique-machine-id")
     });
 
-    client.post("https://coinsextra.com/track")
+    client
+        .post("https://gpt-metrics-cloudflare.andrewkieckhefer.workers.dev")
         .json(&payload)
         .send()
         .await
