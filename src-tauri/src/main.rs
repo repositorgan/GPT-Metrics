@@ -8,7 +8,7 @@ async fn track_app_open() -> Result<(), String> {
         "machine_id": tauri::api::hash::hash("unique-machine-id")
     });
 
-    client.post("https://your-admin-endpoint.com/track")
+    client.post("https://coinsextra.com/track")
         .json(&payload)
         .send()
         .await
