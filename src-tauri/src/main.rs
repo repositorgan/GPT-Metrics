@@ -1,3 +1,9 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
+use reqwest;
+use serde_json;
+use chrono;
+
 #[tauri::command]
 async fn track_event(event_type: String) -> Result<(), String> {
     let client = reqwest::Client::new();
@@ -15,4 +21,11 @@ async fn track_event(event_type: String) -> Result<(), String> {
         .map_err(|e| e.to_string())?;
 
     Ok(())
+}
+
+fn main() {
+    tauri::Builder::default()
+        .invoke_handler(tauri::generate_handler![track_event])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
 }
