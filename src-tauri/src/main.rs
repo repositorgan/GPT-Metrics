@@ -24,7 +24,7 @@ async fn track_event(event_type: String) -> Result<(), String> {
 }
 
 fn main() {
-    tauri::Builder::default()
+    tauri::Builder::default!()
         .invoke_handler(tauri::generate_handler![track_event])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
